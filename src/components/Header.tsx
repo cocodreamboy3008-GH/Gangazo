@@ -10,7 +10,7 @@ export default function Header({
   return (
     <header className="sticky top-0 z-40 border-b border-gray-200 bg-white/95 backdrop-blur">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-3 px-4">
-        <Link href="/" aria-label="Gangazo inicio"><Logo /></Link>
+        <Link href="/" aria-label="Gánalo inicio"><Logo /></Link>
         <nav className="hidden md:flex items-center gap-5 text-sm font-bold text-gray-600">
           <Link href="/" className="hover:text-brand">Subastas</Link>
           <Link href="/paquetes" className="hover:text-brand">Comprar pujas</Link>

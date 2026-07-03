@@ -43,7 +43,7 @@ export async function POST(req: Request) {
     }
     await prisma.notification.create({
       data: {
-        userId: user.id, type: "system", title: `🎉 ¡Bienvenido a Gangazo!`,
+        userId: user.id, type: "system", title: `🎉 ¡Bienvenido a Gánalo!`,
         message: `Te regalamos ${SIGNUP_BONUS_BIDS} pujas para empezar. Juega, Puja, Gana.`,
       },
     });

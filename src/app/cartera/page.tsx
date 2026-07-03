@@ -50,7 +50,7 @@ export default async function Cartera() {
 
       <div className="card divide-y divide-gray-100">
         <h2 className="p-4 font-bold">Historial de pagos</h2>
-        {payments.length === 0 && <p className="p-4 text-sm text-gray-400">Aún no tienes pagos. ¡Tu primer gangazo te espera!</p>}
+        {payments.length === 0 && <p className="p-4 text-sm text-gray-400">Aún no tienes pagos. ¡Tu primera ganga te espera!</p>}
         {payments.map((p) => {
           const [label, cls] = STATUS[p.status] ?? [p.status, "bg-gray-100"];
           return (

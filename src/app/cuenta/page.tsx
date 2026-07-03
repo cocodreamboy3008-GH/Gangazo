@@ -122,7 +122,7 @@ export default async function Cuenta({ searchParams }: { searchParams: { tab?: s
           <p className="my-3 rounded-lg border-2 border-dashed border-brand bg-brand/5 p-3 text-center font-mono text-2xl font-extrabold tracking-widest text-brand">
             {user.referralCode}
           </p>
-          <p className="text-xs text-gray-400 text-center">Comparte: gangazo.com/registro?ref={user.referralCode}</p>
+          <p className="text-xs text-gray-400 text-center">Comparte: ganalo.xyz/registro?ref={user.referralCode}</p>
           <h3 className="mt-4 font-bold text-sm">Tus referidos ({referrals.length})</h3>
           <ul className="mt-1 divide-y divide-gray-100 text-sm">
             {referrals.map((r) => (

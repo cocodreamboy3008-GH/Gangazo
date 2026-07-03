@@ -24,7 +24,7 @@ export default async function Home() {
         <section className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-brand via-brand-dark to-blue-brand p-6 md:p-10 text-white">
           <h1 className="text-3xl md:text-5xl font-extrabold leading-tight">Juega. Puja. <span className="text-gold">Gana.</span></h1>
           <p className="mt-2 max-w-lg text-white/90 md:text-lg">
-            Subastas en vivo desde <b>$0.01 MXN</b>. iPhones, pantallas, consolas… tu gangazo te espera. Real deals, real fun. 🇲🇽
+            Subastas en vivo desde <b>$0.01 MXN</b>. iPhones, pantallas, consolas… tu ganga te espera. Real deals, real fun. 🇲🇽
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
             <Link href="/registro" className="btn bg-white text-brand hover:bg-gold hover:text-ink">🎁 Regístrate: 50 pujas GRATIS</Link>

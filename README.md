@@ -1,4 +1,4 @@
-# 🔥 GANGAZO — Juega, Puja, Gana
+# 🔥 GÁNALO — Juega, Puja, Gana
 
 Plataforma de subastas de centavo (penny auctions) para el mercado mexicano. Clon funcional de DealDash con marca propia, en español, con precios en MXN.
 
@@ -10,12 +10,12 @@ npm run setup   # crea la base de datos SQLite + datos de demostración
 npm run dev     # http://localhost:3000
 ```
 
-**Cuentas de demo** (contraseña `Gangazo2026!`):
+**Cuentas de demo** (contraseña `Ganalo2026!`):
 
 | Cuenta | Rol |
 |---|---|
-| `demo@gangazo.com` | Usuario con 500 pujas |
-| `admin@gangazo.com` | Admin (dashboard en `/admin`) |
+| `demo@ganalo.xyz` | Usuario con 500 pujas |
+| `admin@ganalo.xyz` | Admin (dashboard en `/admin`) |
 
 ## Qué incluye
 
@@ -49,4 +49,4 @@ MP_ACCESS_TOKEN=APP_USR-...          # activa Mercado Pago (webhook /api/webhook
 
 ## Stack
 
-Next.js 14 (App Router, un solo deploy para frontend + API), TypeScript, Tailwind CSS con tokens de marca Gangazo, Prisma + SQLite/PostgreSQL, SSE para tiempo real. Cero dependencias de pago: los gateways se integran vía HTTP directo.
+Next.js 14 (App Router, un solo deploy para frontend + API), TypeScript, Tailwind CSS con tokens de marca Gánalo, Prisma + SQLite/PostgreSQL, SSE para tiempo real. Cero dependencias de pago: los gateways se integran vía HTTP directo.

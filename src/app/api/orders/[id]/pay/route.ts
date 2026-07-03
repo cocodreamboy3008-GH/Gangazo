@@ -18,7 +18,7 @@ export async function POST(req: Request, { params }: { params: { id: string } })
 
     const r = await createCheckout({
       userId: user.id, amountCents: order.dueCents, type: "order", method,
-      orderId: order.id, description: `Gangazo — ${order.kind === "win" ? "Subasta ganada" : "Cómpralo Ya"}: ${order.product.name}`,
+      orderId: order.id, description: `Gánalo — ${order.kind === "win" ? "Subasta ganada" : "Cómpralo Ya"}: ${order.product.name}`,
       baseUrl: new URL(req.url).origin,
     });
     return Response.json(r);

@@ -42,7 +42,7 @@ export default async function PagoPage({ params }: { params: { id: string } }) {
             <p className="font-bold">Transferencia SPEI</p>
             <p className="mt-1">Banco: <b>BBVA México</b></p>
             <p>CLABE: <b className="font-mono">{p.reference}</b></p>
-            <p>Beneficiario: <b>Gangazo SA de CV</b></p>
+            <p>Beneficiario: <b>Gánalo SA de CV</b></p>
             <p className="mt-1 text-gray-500">Transfiere el monto exacto. Se acredita en 5-10 minutos.</p>
           </div>
         )}

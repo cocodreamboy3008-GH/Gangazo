@@ -32,7 +32,7 @@ export default function AuthForm({ mode }: { mode: "login" | "signup" }) {
           {mode === "login" ? "¡Hola de nuevo! 👋" : "Crea tu cuenta 🎉"}
         </h1>
         <p className="mb-5 text-sm text-gray-500">
-          {mode === "login" ? "Tus gangazos te extrañan." : "Te regalamos 50 pujas para empezar. Juega, Puja, Gana."}
+          {mode === "login" ? "Tus gangas te extrañan." : "Te regalamos 50 pujas para empezar. Juega, Puja, Gana."}
         </p>
         <form onSubmit={submit} className="space-y-3">
           {mode === "signup" && (
@@ -54,7 +54,7 @@ export default function AuthForm({ mode }: { mode: "login" | "signup" }) {
         </form>
         <p className="mt-4 text-center text-sm text-gray-500">
           {mode === "login" ? (
-            <>¿Nuevo en Gangazo? <Link className="font-bold text-brand hover:underline" href="/registro">Regístrate gratis</Link></>
+            <>¿Nuevo en Gánalo? <Link className="font-bold text-brand hover:underline" href="/registro">Regístrate gratis</Link></>
           ) : (
             <>¿Ya tienes cuenta? <Link className="font-bold text-brand hover:underline" href="/login">Inicia sesión</Link></>
           )}

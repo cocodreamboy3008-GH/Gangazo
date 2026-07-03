@@ -2,7 +2,7 @@
 # Note: free tier has an ephemeral disk — the demo DB reseeds on each deploy.
 services:
   - type: web
-    name: gangazo
+    name: ganalo
     runtime: docker
     plan: free
     envVars:

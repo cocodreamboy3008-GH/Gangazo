@@ -39,7 +39,7 @@ async function main() {
     console.log("DB ya tiene datos — omito seed (usa FORCE_SEED=1 para reiniciar)");
     return;
   }
-  console.log("🌱 Seeding Gangazo...");
+  console.log("🌱 Seeding Gánalo...");
   await db.$transaction([
     db.bid.deleteMany(), db.watch.deleteMany(), db.bidBuddy.deleteMany(),
     db.notification.deleteMany(), db.payment.deleteMany(), db.order.deleteMany(),
@@ -47,12 +47,12 @@ async function main() {
     db.user.deleteMany(),
   ]);
 
-  const pw = hashPassword("Gangazo2026!");
+  const pw = hashPassword("Ganalo2026!");
   const admin = await db.user.create({
-    data: { email: "admin@gangazo.com", passwordHash: pw, name: "Admin Gangazo", username: "gangazo_admin", role: "admin", bidBalance: 1000, referralCode: "ADMIN1" },
+    data: { email: "admin@ganalo.xyz", passwordHash: pw, name: "Admin Gánalo", username: "ganalo_admin", role: "admin", bidBalance: 1000, referralCode: "ADMIN1" },
   });
   const demo = await db.user.create({
-    data: { email: "demo@gangazo.com", passwordHash: pw, name: "Jorge Cohen", username: "jorge_mx", bidBalance: 500, referralCode: "JORGE1" },
+    data: { email: "demo@ganalo.xyz", passwordHash: pw, name: "Jorge Cohen", username: "jorge_mx", bidBalance: 500, referralCode: "JORGE1" },
   });
 
   const cats: Record<string, string> = {};
@@ -97,7 +97,7 @@ async function main() {
     });
   }
 
-  console.log(`✅ Seed listo. Usuarios: demo@gangazo.com / admin@gangazo.com (contraseña: Gangazo2026!)`);
+  console.log(`✅ Seed listo. Usuarios: demo@ganalo.xyz / admin@ganalo.xyz (contraseña: Ganalo2026!)`);
 }
 
 main().finally(() => db.$disconnect());

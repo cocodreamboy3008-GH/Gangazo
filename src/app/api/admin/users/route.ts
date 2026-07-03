@@ -17,7 +17,7 @@ export async function PUT(req: Request) {
       if (!n || n < 1 || n > 10000) throw new AppError("Cantidad inválida");
       await prisma.user.update({ where: { id }, data: { bidBalance: { increment: n } } });
       await prisma.notification.create({
-        data: { userId: id, type: "system", title: "🎁 Pujas de cortesía", message: `El equipo Gangazo te acreditó ${n} pujas.` },
+        data: { userId: id, type: "system", title: "🎁 Pujas de cortesía", message: `El equipo Gánalo te acreditó ${n} pujas.` },
       });
     } else throw new AppError("Acción inválida");
 

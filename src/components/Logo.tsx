@@ -7,7 +7,7 @@ export default function Logo({ light = false }: { light?: boolean }) {
         <path d="M20 16h6l-3-4z" fill="#FFD60A" />
       </svg>
       <span className={`text-xl font-extrabold tracking-tight ${light ? "text-white" : "text-ink"}`}>
-        GANGA<span className="text-brand">ZO</span>
+        GÁNA<span className="text-brand">LO</span><span className="text-gray-400 text-sm font-bold">.xyz</span>
       </span>
     </span>
   );

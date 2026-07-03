@@ -10,7 +10,7 @@ const g = globalThis as unknown as { __engine?: ReturnType<typeof setInterval> }
 export function startEngine() {
   if (g.__engine) return;
   g.__engine = setInterval(() => tick().catch((e) => console.error("engine:", e)), 1000);
-  console.log("⚡ Gangazo auction engine started");
+  console.log("⚡ Gánalo auction engine started");
 }
 
 async function tick() {

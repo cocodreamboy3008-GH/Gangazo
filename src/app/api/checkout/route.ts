@@ -17,7 +17,7 @@ export async function POST(req: Request) {
       type: "bid_pack",
       method,
       bidsQty: pack.bids,
-      description: `Gangazo — Paquete ${pack.name} (${pack.bids} pujas)`,
+      description: `Gánalo — Paquete ${pack.name} (${pack.bids} pujas)`,
       baseUrl: new URL(req.url).origin,
     });
     return Response.json(r);

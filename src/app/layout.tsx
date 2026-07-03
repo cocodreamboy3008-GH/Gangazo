@@ -5,7 +5,7 @@ import BottomNav from "@/components/BottomNav";
 import { getUser } from "@/lib/auth";
 
 export const metadata: Metadata = {
-  title: "Gangazo — Juega, Puja, Gana",
+  title: "Gánalo — Juega, Puja, Gana",
   description:
     "Subastas en vivo desde $0.01 MXN. TVs, consolas, iPhones y más. Real deals, real fun. La plataforma de subastas más divertida de México.",
 };
@@ -26,9 +26,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <Header user={user ? { name: user.name, username: user.username, bidBalance: user.bidBalance, admin: user.role === "admin" } : null} />
         <main className="mx-auto max-w-6xl px-4 pb-24 md:pb-12 pt-4 min-h-[80vh]">{children}</main>
         <footer className="hidden md:block border-t border-gray-200 bg-white py-8 text-center text-sm text-gray-500">
-          <p className="font-bold text-ink mb-1">GANGAZO · Juega, Puja, Gana 🇲🇽</p>
+          <p className="font-bold text-ink mb-1">GANALO.XYZ · Juega, Puja, Gana 🇲🇽</p>
           <p>Transparente. Justo. De verdad. Cada puja cuesta $0.13 MXN. Si no ganas, usa Cómpralo Ya y tus pujas cuentan como descuento.</p>
-          <p className="mt-2">Solo mayores de 18 años · Juega responsablemente · soporte@gangazo.com</p>
+          <p className="mt-2">Solo mayores de 18 años · Juega responsablemente · soporte@ganalo.xyz</p>
         </footer>
         <BottomNav loggedIn={!!user} />
       </body>

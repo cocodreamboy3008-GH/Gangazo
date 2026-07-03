@@ -26,5 +26,5 @@ export const isDemoPayments = () => !stripeKey() && !mpToken();
 export const BOT_NAMES = [
   "LuchaLibre_MX", "ChilangoWin", "Reyna_Pujas", "ElGanon77", "SubastaKing",
   "MariaGdl", "TapatioPro", "CarlosMTY", "LaJefa_CDMX", "PujadorX",
-  "SofiRegia", "DonGangazo", "AztecaBid", "NortenaVip", "El_Rayo",
+  "SofiRegia", "DonGanalo", "AztecaBid", "NortenaVip", "El_Rayo",
 ];

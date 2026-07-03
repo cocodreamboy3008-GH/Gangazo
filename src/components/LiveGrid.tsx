@@ -54,7 +54,7 @@ export default function LiveGrid({ cats }: { cats: { name: string; slug: string;
         <div className="card p-10 text-center text-gray-500">
           <p className="text-4xl mb-2">🌵</p>
           <p className="font-bold">Nada por aquí todavía…</p>
-          <p className="text-sm">Vuelve pronto, siempre hay nuevos gangazos.</p>
+          <p className="text-sm">Vuelve pronto, siempre hay nuevas gangas.</p>
         </div>
       ) : (
         <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">

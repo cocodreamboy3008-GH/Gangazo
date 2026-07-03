@@ -1,6 +1,6 @@
 import { scryptSync, randomBytes, timingSafeEqual, createHmac } from "crypto";
 
-const SECRET = process.env.AUTH_SECRET || "gangazo-dev-secret-change-in-prod";
+const SECRET = process.env.AUTH_SECRET || "ganalo-dev-secret-change-in-prod";
 
 export function hashPassword(pw: string) {
   const salt = randomBytes(16).toString("hex");

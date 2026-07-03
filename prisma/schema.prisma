@@ -1,4 +1,4 @@
-// Gangazo — penny auction platform. SQLite for zero-config dev.
+// Gánalo — penny auction platform. SQLite for zero-config dev.
 // Production: change provider to "postgresql" and url to env("DATABASE_URL").
 datasource db {
   provider = "sqlite"

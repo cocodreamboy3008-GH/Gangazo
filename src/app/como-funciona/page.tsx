@@ -10,7 +10,7 @@ const STEPS = [
 export default function ComoFunciona() {
   return (
     <div className="mx-auto max-w-2xl space-y-4">
-      <h1 className="text-2xl md:text-3xl font-extrabold">¿Cómo funciona Gangazo? 🤔</h1>
+      <h1 className="text-2xl md:text-3xl font-extrabold">¿Cómo funciona Gánalo? 🤔</h1>
       <p className="text-gray-500">Transparente. Justo. De verdad. Así de simple:</p>
       <div className="grid gap-3 sm:grid-cols-2">
         {STEPS.map(([n, emoji, title, body]) => (
