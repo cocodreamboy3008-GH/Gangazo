@@ -1,0 +1,10 @@
+# One-click deploy on Render (free tier): New + > Blueprint > point at this repo.
+# Note: free tier has an ephemeral disk — the demo DB reseeds on each deploy.
+services:
+  - type: web
+    name: gangazo
+    runtime: docker
+    plan: free
+    envVars:
+      - key: AUTH_SECRET
+        generateValue: true

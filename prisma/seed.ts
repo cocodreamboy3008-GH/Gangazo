@@ -34,6 +34,11 @@ const PRODUCTS: [string, string, number, string, string, string, string][] = [
 ];
 
 async function main() {
+  // Don't wipe a live database on redeploy — reseed only when empty or forced.
+  if (!process.env.FORCE_SEED && (await db.user.count()) > 0) {
+    console.log("DB ya tiene datos — omito seed (usa FORCE_SEED=1 para reiniciar)");
+    return;
+  }
   console.log("🌱 Seeding Gangazo...");
   await db.$transaction([
     db.bid.deleteMany(), db.watch.deleteMany(), db.bidBuddy.deleteMany(),
