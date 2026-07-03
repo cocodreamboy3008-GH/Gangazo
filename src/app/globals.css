@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-soft text-ink font-sans antialiased;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 font-bold text-sm md:text-base transition-all duration-150 active:scale-95 disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-primary { @apply btn bg-brand text-white hover:bg-brand-dark shadow-card; }
+  .btn-secondary { @apply btn bg-blue-brand text-white hover:bg-blue-dark; }
+  .btn-ghost { @apply btn border-2 border-blue-brand text-blue-brand hover:bg-blue-light px-5 py-2.5; }
+  .btn-success { @apply btn bg-win text-white hover:brightness-95; }
+  .card { @apply bg-white rounded-xl border border-gray-100 shadow-card; }
+  .input {
+    @apply w-full rounded-md border border-gray-300 bg-soft px-3 py-2.5 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-brand focus:border-transparent;
+  }
+  .label { @apply block text-sm font-bold mb-1.5; }
+  .chip { @apply inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-bold; }
+}
+
+/* live timer urgency */
+@keyframes urgentPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+.timer-urgent { animation: urgentPulse 0.5s ease-in-out infinite; @apply text-danger; }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { @apply bg-gray-300 rounded-full; }

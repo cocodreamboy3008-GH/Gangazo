@@ -1,0 +1,178 @@
+// Gánalo — penny auction platform. SQLite for zero-config dev.
+// Production: change provider to "postgresql" and url to env("DATABASE_URL").
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id                String   @id @default(uuid())
+  email             String   @unique
+  passwordHash      String
+  name              String
+  username          String   @unique
+  phone             String?
+  role              String   @default("user") // user | admin
+  status            String   @default("active") // active | suspended | banned
+  bidBalance        Int      @default(0) // number of bids available
+  monthlyLimitCents Int      @default(500000) // MX$5,000 responsible-spend limit
+  monthKey          String   @default("")
+  monthSpendCents   Int      @default(0)
+  totalSpendCents   Int      @default(0)
+  referralCode      String   @unique
+  referredById      String?
+  createdAt         DateTime @default(now())
+
+  bids          Bid[]
+  payments      Payment[]
+  watches       Watch[]
+  buddies       BidBuddy[]
+  notifications Notification[]
+  orders        Order[]
+  wonAuctions   Auction[]      @relation("winner")
+}
+
+model Category {
+  id       String    @id @default(uuid())
+  name     String    @unique
+  slug     String    @unique
+  emoji    String
+  products Product[]
+}
+
+model Product {
+  id          String  @id @default(uuid())
+  name        String
+  description String
+  brand       String
+  retailCents Int
+  costCents   Int     @default(0)
+  emoji       String // self-contained product art
+  gradient    String // tailwind gradient classes for card art
+  status      String  @default("active")
+  categoryId  String
+  category    Category @relation(fields: [categoryId], references: [id])
+
+  auctions Auction[]
+  orders   Order[]
+}
+
+model Auction {
+  id          String    @id @default(uuid())
+  productId   String
+  product     Product   @relation(fields: [productId], references: [id])
+  status      String    @default("scheduled") // scheduled | active | ended | cancelled
+  priceCents  Int       @default(0)
+  finalCents  Int?
+  totalBids   Int       @default(0)
+  startsAt    DateTime
+  timerEndsAt DateTime?
+  endedAt     DateTime?
+  winnerId    String?
+  winner      User?     @relation("winner", fields: [winnerId], references: [id])
+  winnerName  String? // display name (bot winners included)
+  featured    Boolean   @default(false)
+  botsEnabled Boolean   @default(true)
+  botTarget   Int       @default(250) // bots retire after ~this many total bids
+  createdAt   DateTime  @default(now())
+
+  bids    Bid[]
+  watches Watch[]
+  buddies BidBuddy[]
+  orders  Order[]
+
+  @@index([status, timerEndsAt])
+  @@index([status, startsAt])
+}
+
+model Bid {
+  id         String   @id @default(uuid())
+  auctionId  String
+  auction    Auction  @relation(fields: [auctionId], references: [id], onDelete: Cascade)
+  userId     String?
+  user       User?    @relation(fields: [userId], references: [id])
+  botName    String?
+  priceCents Int
+  createdAt  DateTime @default(now())
+
+  @@index([auctionId, createdAt])
+  @@index([userId])
+}
+
+model Payment {
+  id          String    @id @default(uuid())
+  userId      String
+  user        User      @relation(fields: [userId], references: [id])
+  amountCents Int
+  currency    String    @default("MXN")
+  type        String // bid_pack | order
+  method      String // card | mercado_pago | oxxo | spei | demo
+  status      String    @default("pending") // pending | completed | failed | expired
+  bidsQty     Int? // bids credited for bid_pack payments
+  orderId     String?   @unique
+  order       Order?    @relation(fields: [orderId], references: [id])
+  reference   String? // OXXO / SPEI reference
+  externalId  String? // Stripe / Mercado Pago id
+  createdAt   DateTime  @default(now())
+  completedAt DateTime?
+
+  @@index([userId, createdAt])
+  @@index([status])
+}
+
+model Order {
+  id         String   @id @default(uuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  auctionId  String
+  auction    Auction  @relation(fields: [auctionId], references: [id])
+  productId  String
+  product    Product  @relation(fields: [productId], references: [id])
+  kind       String // win | bin (Buy It Now)
+  dueCents   Int // amount owed (win: final price; bin: retail - bid credit)
+  status     String   @default("pending_payment") // pending_payment | paid | shipped | delivered
+  createdAt  DateTime @default(now())
+  payment    Payment?
+
+  @@index([userId])
+}
+
+model Watch {
+  id        String  @id @default(uuid())
+  userId    String
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  auctionId String
+  auction   Auction @relation(fields: [auctionId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, auctionId])
+}
+
+model BidBuddy {
+  id            String  @id @default(uuid())
+  userId        String
+  user          User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  auctionId     String
+  auction       Auction @relation(fields: [auctionId], references: [id], onDelete: Cascade)
+  bidsLeft      Int
+  maxPriceCents Int?
+
+  @@unique([userId, auctionId])
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      String // won | outbid | payment | system
+  title     String
+  message   String
+  auctionId String?
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([userId, read, createdAt])
+}
