@@ -20,7 +20,12 @@ export async function placeBid(auctionId: string, by: { userId?: string; usernam
         where: { id: by.userId, bidBalance: { gt: 0 }, status: "active" },
         data: { bidBalance: { decrement: 1 } },
       });
-      if (ok.count === 0) throw new AppError("Te quedaste sin pujas. ¡Recarga tu paquete!", 402);
+      if (ok.count === 0) {
+        const u = await tx.user.findUnique({ where: { id: by.userId }, select: { status: true } });
+        if (u && u.status !== "active")
+          throw new AppError("Tu cuenta está suspendida. Contacta a soporte.", 403);
+        throw new AppError("Te quedaste sin pujas. ¡Recarga tu paquete!", 402);
+      }
     }
 
     const priceCents = a.priceCents + 1;

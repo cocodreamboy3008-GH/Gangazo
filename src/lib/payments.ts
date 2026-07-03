@@ -4,9 +4,11 @@ import { stripeKey, mpToken, isDemoPayments } from "./config";
 
 const monthKey = () => new Date().toISOString().slice(0, 7);
 
-// Responsible-spending guard (monthly limit, resets lazily each month)
+// Account + responsible-spending guard (monthly limit, resets lazily each month)
 export async function checkSpendLimit(userId: string, amountCents: number) {
   const u = await prisma.user.findUniqueOrThrow({ where: { id: userId } });
+  if (u.status !== "active")
+    throw new AppError("Tu cuenta está suspendida. Contacta a soporte.", 403);
   const spent = u.monthKey === monthKey() ? u.monthSpendCents : 0;
   if (spent + amountCents > u.monthlyLimitCents) {
     const left = Math.max(0, u.monthlyLimitCents - spent);

@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/db";
-import { mxn, fmtDate } from "@/lib/format";
+import { mxn } from "@/lib/format";
 import { BID_COST_CENTS } from "@/lib/config";
 
 export const dynamic = "force-dynamic";
